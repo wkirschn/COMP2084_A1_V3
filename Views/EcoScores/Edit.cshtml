@@ -4,10 +4,12 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="text-center">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home<img src="~/img/grey_logo.png" /></br></a>
+    </div>
+    <h1>Edit for: @Html.DisplayFor(model => model.ObjectName)</h1>
 
-<h1>Edit</h1>
 
-<h4>EcoScore</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +17,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="EcoscoreId" />
             <div class="form-group">
-                <label asp-for="ObjectName" class="control-label"></label>
+                <label asp-for="ObjectName" class="control-label">Item</label>
                 <input asp-for="ObjectName" class="form-control" />
                 <span asp-validation-for="ObjectName" class="text-danger"></span>
             </div>
@@ -45,7 +47,7 @@
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ecoscore1" class="control-label"></label>
+                <label asp-for="Ecoscore1" class="control-label">EcoScore</label>
                 <input asp-for="Ecoscore1" class="form-control" />
                 <span asp-validation-for="Ecoscore1" class="text-danger"></span>
             </div>

@@ -4,8 +4,27 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="text-center">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home<img src="~/img/grey_logo.png" /></br></a>
+    </div>
 
-<h1>Index</h1>
+<h1>EcoScore Catalogue</h1>
+<div class="text-left">
+    <blockquote>
+        This is a table that was created to have the functionality of being a child to the User Controller. The idea is to be able to currently fill the table
+        with the fields that are filled in with the Object Name, eventually the EcoScore ID. These fields include:
+        <ul>
+            <li>Description</li>
+            <li>Reuse</li>
+            <li>Reduce</li>
+            <li>Recycle</li>
+            <li>Photo</li>
+            <li>EcoScore</li>
+        </ul>
+    </blockquote>
+
+</div>
+
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -14,7 +33,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ObjectName)
+                Item
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -32,41 +51,44 @@
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ecoscore1)
+                EcoScore
             </th>
-            <th></th>
+            <th>
+                Action List
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reuse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reduce)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recycle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ecoscore1)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.EcoscoreId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EcoscoreId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EcoscoreId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reuse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reduce)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recycle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ecoscore1)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EcoscoreId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EcoscoreId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EcoscoreId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
