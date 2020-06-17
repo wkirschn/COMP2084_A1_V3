@@ -1,23 +1,44 @@
 ﻿@model IEnumerable<COMP2084___A1.Models.UserSelection>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "User List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="text-center">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home<img src="~/img/grey_logo.png" /></br></a>
+            </div>
 
-<h1>Index</h1>
+<h1>User List</h1>
+<div class="text-left">
+    <blockquote>
+        This is a table that was created to have the functionality of having a one-to-many relationship. The idea would to have the EcoScore ID pulled from the EcoScores
+        Controller and then proceed to populate the following fields when the Item is selected:
+
+        <ul>
+            <li>Description</li>
+            <li>Reuse</li>
+            <li>Reduce</li>
+            <li>Recycle</li>
+            <li>Photo</li>
+            <li>EcoScore</li>
+        </ul>
+    </blockquote>
+
+</div>
+
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add a New Entry</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                Full Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ObjectName)
+                Item
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -35,12 +56,12 @@
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ecoscore)
+                EcoScore
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EcoscoreNavigation)
+                EcoScore ID               
             </th>
-            <th></th>
+            <th>Action List</th>
         </tr>
     </thead>
     <tbody>
@@ -71,7 +92,8 @@
                 @Html.DisplayFor(modelItem => item.Ecoscore)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EcoscoreNavigation.Description)
+                @Html.DisplayFor(modelItem => item.EcoscoreNavigation.EcoscoreId)
+                
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
@@ -82,3 +104,5 @@
 }
     </tbody>
 </table>
+<br />
+<p></p>

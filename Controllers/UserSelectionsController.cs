@@ -22,6 +22,7 @@ namespace COMP2084___A1.Controllers
         public async Task<IActionResult> Index()
         {
             var cOMP2084_A1_V3Context = _context.UserSelection.Include(u => u.EcoscoreNavigation);
+            
             return View(await cOMP2084_A1_V3Context.ToListAsync());
         }
 
@@ -47,7 +48,8 @@ namespace COMP2084___A1.Controllers
         // GET: UserSelections/Create
         public IActionResult Create()
         {
-            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "Description");
+            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "EcoscoreId");
+            ViewData["objectName"] = new SelectList(_context.EcoScore, "objectName", "objectName"); ////
             return View();
         }
 
@@ -64,7 +66,8 @@ namespace COMP2084___A1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "Description", userSelection.EcoscoreId);
+            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "EcoscoreId", userSelection.EcoscoreId);
+            ViewData["objectName"] = new SelectList(_context.EcoScore, "objectName", "objectName", userSelection.ObjectName);
             return View(userSelection);
         }
 
@@ -81,7 +84,8 @@ namespace COMP2084___A1.Controllers
             {
                 return NotFound();
             }
-            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "Description", userSelection.EcoscoreId);
+            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "EcoscoreId", userSelection.EcoscoreId);
+            ViewData["objectName"] = new SelectList(_context.EcoScore, "objectName", "objectName", userSelection.ObjectName);
             return View(userSelection);
         }
 
@@ -117,7 +121,8 @@ namespace COMP2084___A1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "Description", userSelection.EcoscoreId);
+            ViewData["EcoscoreId"] = new SelectList(_context.EcoScore, "EcoscoreId", "EcoscoreId", userSelection.EcoscoreId);
+            ViewData["objectName"] = new SelectList(_context.EcoScore, "objectName", "objectName", userSelection.ObjectName);
             return View(userSelection);
         }
 

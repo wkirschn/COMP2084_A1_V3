@@ -21,12 +21,12 @@
 
 <body>
 
-<h1>Wyatt Kirschner - COMP2084 - A1 - 200407722</h1>
+
 
 <div  class="text-center">
 
-<h1  class="display-4">Welcome to <img  src="wwwroot/img/white_logo.png" /></h1>
-
+<h1  class="display-4, text-center"><img  src="wwwroot/img/white_logo.png" /></h1>
+<h1>Wyatt Kirschner - COMP2084 - A1 - 200407722</h1>
 <p>This website was created behind the idea of being able to determine if the products you use are good for the environment or not!</p>
 
 </div>
