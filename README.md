@@ -9,7 +9,7 @@
 
 <meta  http-equiv="X-UA-Compatible"  content="IE=edge">
 
-<title></title>
+<title>RePsychle</title>
 
 <meta  name="description"  content="">
 
@@ -25,7 +25,7 @@
 
 <div  class="text-center">
 
-<h1  class="display-4">Welcome to <img  src="wwwroot/img/grey_logo.png" /></h1>
+<h1  class="display-4">Welcome to <img  src="wwwroot/img/white_logo.png" /></h1>
 
 <p>This website was created behind the idea of being able to determine if the products you use are good for the environment or not!</p>
 
@@ -87,11 +87,11 @@ The main objective is to give the user a 'snapshot' of the item's lifecycle. If 
 
 <div class="text-center">
 
-<img src="~/img/circle_logo.png" />
+<img src="wwwroot/img/white_logo.png" />
 
 </div>
 
-<script src="" async defer></script>
+
 
 </body>
 
