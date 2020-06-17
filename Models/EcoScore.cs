@@ -14,6 +14,7 @@ namespace COMP2084___A1.Models
 
         [Key]
         [Column("ecoscore_ID")]
+        
         public int EcoscoreId { get; set; }
         [Required]
         [Column("objectName")]
