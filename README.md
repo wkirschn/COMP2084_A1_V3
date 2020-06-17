@@ -9,7 +9,7 @@
 
 <meta  http-equiv="X-UA-Compatible"  content="IE=edge">
 
-<title>RePsychle</title>
+
 
 <meta  name="description"  content="">
 
