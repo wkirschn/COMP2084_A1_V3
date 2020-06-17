@@ -1,0 +1,73 @@
+﻿@model COMP2084___A1.Models.UserSelection
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>UserSelection</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ObjectName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ObjectName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reuse)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reuse)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reduce)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reduce)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Recycle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Recycle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ecoscore)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ecoscore)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EcoscoreNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EcoscoreNavigation.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
