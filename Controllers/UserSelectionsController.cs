@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using COMP2084___A1.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace COMP2084___A1.Controllers
 {
@@ -46,6 +47,7 @@ namespace COMP2084___A1.Controllers
         }
 
         // GET: UserSelections/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["EcoscoreId"] = new SelectList(_context.EcoScore.OrderBy(c => c.EcoscoreId), "EcoscoreId", "EcoscoreId");
@@ -72,6 +74,7 @@ namespace COMP2084___A1.Controllers
         }
 
         // GET: UserSelections/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -127,6 +130,7 @@ namespace COMP2084___A1.Controllers
         }
 
         // GET: UserSelections/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

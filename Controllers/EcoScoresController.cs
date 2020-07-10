@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using COMP2084___A1.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace COMP2084___A1.Controllers
 {
+    
     public class EcoScoresController : Controller
     {
         private readonly COMP2084_A1_V3Context _context;
@@ -43,6 +45,7 @@ namespace COMP2084___A1.Controllers
         }
 
         // GET: EcoScores/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -65,6 +68,7 @@ namespace COMP2084___A1.Controllers
         }
 
         // GET: EcoScores/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -116,6 +120,7 @@ namespace COMP2084___A1.Controllers
         }
 
         // GET: EcoScores/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

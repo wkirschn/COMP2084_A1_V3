@@ -9,6 +9,25 @@
     </div>
 
 <h1>EcoScore Catalogue</h1>
+
+@if(User.Identity.IsAuthenticated){
+<div class="authEcoIndex">
+    <p>Drumroll please!</p>
+    <img height="250px" width="auto" src="~/img/drumroll.gif" />
+    <h2>Welcome back! @User.Identity.Name</h2>
+    <blockquote>Thank you for being apart of the RePsychle Community!</blockquote>
+</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+
+
+
 <div class="text-left">
     <blockquote>
         This is a table that was created to have the functionality of being a child to the User Controller. The idea is to be able to currently fill the table
@@ -25,10 +44,8 @@
 
 </div>
 
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table sortable">
     <thead>
         <tr>

@@ -36,7 +36,7 @@ namespace COMP2084___A1
             // Used to point Identity to the existing Eco DB
             // Then we use the default cookie settings
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                //.AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultUI()
                 .AddRoles<ApplicationRole>()
                 .AddRoleManager<RoleManager<ApplicationRole>>()
                 .AddEntityFrameworkStores<COMP2084_A1_V3Context>()
