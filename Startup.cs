@@ -31,8 +31,20 @@ namespace COMP2084___A1
             services.AddDbContext<COMP2084_A1_V3Context>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<COMP2084_A1_V3Context>();
+            // We will use this to work without DBase
+            // For the new application, this ApplicationRole class will be used to manage the roles and permissions
+            // Used to point Identity to the existing Eco DB
+            // Then we use the default cookie settings
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                //.AddDefaultUI(UIFramework.Bootstrap4)
+                .AddRoles<ApplicationRole>()
+                .AddRoleManager<RoleManager<ApplicationRole>>()
+                .AddEntityFrameworkStores<COMP2084_A1_V3Context>()
+                .AddDefaultTokenProviders();
+
+
+            /*services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<COMP2084_A1_V3Context>();*/
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
