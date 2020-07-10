@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace COMP2084___A1.Controllers
 {
+    
     public class UserSelectionsController : Controller
     {
         private readonly COMP2084_A1_V3Context _context;
@@ -18,7 +19,7 @@ namespace COMP2084___A1.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         // GET: UserSelections
         public async Task<IActionResult> Index()
         {

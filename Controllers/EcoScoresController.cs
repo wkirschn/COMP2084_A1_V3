@@ -19,7 +19,7 @@ namespace COMP2084___A1.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         // GET: EcoScores
         public async Task<IActionResult> Index()
         {
