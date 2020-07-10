@@ -32,7 +32,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="EcoScores" asp-action="Index">EcoScores</a>
                         </li>
-                        @if (User.IsInRole("Administrator"))
+                        @if (User.Identity.IsAuthenticated)
                         {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="UserSelections" asp-action="Index">User Selection</a>

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace COMP2084___A1.Controllers
 {
-    [Authorize (Roles = "Administrator")]
+    [Authorize (Roles = "Administrator, Customer")]
     public class UserSelectionsController : Controller
     {
         private readonly COMP2084_A1_V3Context _context;

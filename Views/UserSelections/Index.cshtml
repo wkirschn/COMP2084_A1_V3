@@ -71,7 +71,7 @@
 <table class="table sortable">
     <thead>
         <tr>
-            @if (User.Identity.IsAuthenticated)
+            @if (User.IsInRole("Administrator"))
             {
                 <th>
                     Full Name
@@ -114,7 +114,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.IsInRole("Administrator"))
                 {
                     <td>
                         @Html.DisplayFor(modelItem => item.FullName)

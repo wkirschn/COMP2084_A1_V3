@@ -20,7 +20,7 @@
         <h3>Drumroll</h3>
         <img height="250px" width="auto" src="~/img/drumroll.gif" />
         <h4>Thank you! @User.Identity.Name</h4>
-        <blockquote>Access the database with Actions</blockquote>
+        <blockquote>Access the database by creating content!</blockquote>
     </div>
     <p>
         <a asp-action="Create">Create New</a>
@@ -34,9 +34,9 @@
     <div class="text-center">
 
         <h3>Hello @User.Identity.Name</h3>
-        <img height="250px" width="auto" src="~/img/mainframe.gif" />
+        <img height="250px" width="auto" src="~/img/computer.gif" />
 
-        <blockquote>Access the database with Names, Ecoscore IDs added</blockquote>
+        <blockquote>Access the database and make edits!</blockquote>
     </div>
     <p>
         <a asp-action="Create">Create New</a>
@@ -96,7 +96,7 @@
             <th>
                 EcoScore
             </th>
-            @if (User.Identity.IsAuthenticated)
+            @if (User.IsInRole("Administrator"))
             {
                 <th>
                     Action List
@@ -129,7 +129,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Ecoscore1)
                 </td>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.IsInRole("Administrator"))
                 {
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.EcoscoreId">Edit</a> |
