@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace COMP2084___A1.Controllers
 {
-    
+    [Authorize(Roles = "Administrator, Customer")]
     public class EcoScoresController : Controller
     {
         private readonly COMP2084_A1_V3Context _context;
@@ -43,9 +43,9 @@ namespace COMP2084___A1.Controllers
 
             return View(ecoScore);
         }
-
-        // GET: EcoScores/Create
         [Authorize]
+        // GET: EcoScores/Create
+
         public IActionResult Create()
         {
             return View();

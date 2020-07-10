@@ -5,41 +5,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="text-center">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/grey_logo.png" /></br></a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/grey_logo.png" /><br></a>
 </div>
 
-@if (User.Identity.IsAuthenticated) 
-    /*!--Fix to display messages based on role*/
+@if (User.IsInRole("Customer"))
+/*!--Fix to display messages based on role*/
 
 {
-<div class="text-center">
-    <h3>Thank you!</h3>
-    <img height="250px" width="auto" src="~/img/bill.gif" />
-    <h2>To you! @User.Identity.Name</h2>
-    <blockquote>Without your support, we wouldn't be able to generate EcoScores! </blockquote>
-</div>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <div class="text-center">
+        <h1>User List</h1>
+        <h3>Thank you!</h3>
+        <img height="250px" width="auto" src="~/img/bill.gif" />
+        <h4>To you! @User.Identity.Name</h4>
+        <blockquote>Access the database with Actions</blockquote>
+    </div>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
 }
-@if (!User.Identity.IsAuthenticated) {
-<h1 class="">User List</h1>
-<div class="text-left">
-    <blockquote>
-        This is a table that was created to have the functionality of having a one-to-many relationship. The idea would to have the EcoScore ID pulled from the EcoScores
-        Controller and then proceed to populate the following fields when the Item is selected:
 
-        <ul>
-            <li>Description</li>
-            <li>Reuse</li>
-            <li>Reduce</li>
-            <li>Recycle</li>
-            <li>Photo</li>
-            <li>EcoScore</li>
-        </ul>
-    </blockquote>
+@if (User.IsInRole("Administrator"))
+/*!--Fix to display messages based on role*/
 
-</div>
+{
+    <div class="text-center">
+        
+        <h3>Hello @User.Identity.Name</h3>
+        <img height="250px" width="auto" src="~/img/mainframe.gif" />
+        
+        <blockquote>Access the database with Names, Ecoscore IDs added</blockquote>
+    </div>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+
+
+
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <h1 class="text-center">User List</h1>
+    <div class="text-left">
+        <blockquote>
+            This is a table that was created to have the functionality of having a one-to-many relationship. The idea would to have the EcoScore ID pulled from the EcoScores
+            Controller and then proceed to populate the following fields when the Item is selected:
+
+            <ul>
+                <li>Description</li>
+                <li>Reuse</li>
+                <li>Reduce</li>
+                <li>Recycle</li>
+                <li>Photo</li>
+                <li>EcoScore</li>
+            </ul>
+        </blockquote>
+
+    </div>
 
 }
 
@@ -47,9 +71,12 @@
 <table class="table sortable">
     <thead>
         <tr>
-            <th>
-                Full Name
-            </th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th>
+                    Full Name
+                </th>
+            }
             <th>
                 Item
             </th>
@@ -71,52 +98,68 @@
             <th>
                 EcoScore
             </th>
-            <th>
-                EcoScore ID
-            </th>
-            <th>Action List</th>
+            @if (User.IsInRole("Administrator"))
+            {
+                <th>
+                    EcoScore ID
+                </th>
+            }
+            @if (User.IsInRole("Administrator"))
+            {
+                <th>Action List</th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reuse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reduce)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recycle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ecoscore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EcoscoreNavigation.EcoscoreId)
+            <tr>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.ObjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reuse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reduce)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recycle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ecoscore)
+                </td>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EcoscoreNavigation.EcoscoreId)
 
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
-            </td>
-        </tr>
+                    </td>
+
+                    <td>
+
+                        <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                    </td>
+                }
+
+            </tr>
         }
     </tbody>
 </table>
 <br />
 <p></p>
+

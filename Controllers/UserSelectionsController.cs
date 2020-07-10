@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace COMP2084___A1.Controllers
 {
-    
+    [Authorize (Roles = "Administrator")]
     public class UserSelectionsController : Controller
     {
         private readonly COMP2084_A1_V3Context _context;
@@ -19,7 +19,7 @@ namespace COMP2084___A1.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
+        
         // GET: UserSelections
         public async Task<IActionResult> Index()
         {
@@ -31,6 +31,7 @@ namespace COMP2084___A1.Controllers
         // GET: UserSelections/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();

@@ -4,45 +4,70 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="text-center">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/grey_logo.png" /></br></a>
-    </div>
-
-<h1>EcoScore Catalogue</h1>
-
-@if(User.Identity.IsAuthenticated){
 <div class="text-center">
-    <p>Drumroll please!</p>
-    <img height="250px" width="auto" src="~/img/drumroll.gif" />
-    <h2>Welcome back! @User.Identity.Name</h2>
-    <blockquote>Thank you for being apart of the RePsychle Community!</blockquote>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/grey_logo.png" /></br></a>
 </div>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
+
+
+
+@if (User.IsInRole("Customer"))
+/*!--Fix to display messages based on role*/
+
+{
+    <div class="text-center">
+        <h1>User List</h1>
+        <h3>Drumroll</h3>
+        <img height="250px" width="auto" src="~/img/drumroll.gif" />
+        <h4>Thank you! @User.Identity.Name</h4>
+        <blockquote>Access the database with Actions</blockquote>
+    </div>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
 }
+
+@if (User.IsInRole("Administrator"))
+/*!--Fix to display messages based on role*/
+
+{
+    <div class="text-center">
+
+        <h3>Hello @User.Identity.Name</h3>
+        <img height="250px" width="auto" src="~/img/mainframe.gif" />
+
+        <blockquote>Access the database with Names, Ecoscore IDs added</blockquote>
+    </div>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+
+
 
 @if (!User.Identity.IsAuthenticated)
 {
+    <div class="text-center">
+        <h1>EcoScore Catalogue</h1>
+    </div>
 
 
+    <div class="text-left">
+        <blockquote>
+            This is a table that was created to have the functionality of being a child to the User Controller. The idea is to be able to currently fill the table
+            with the fields that are filled in with the Object Name, eventually the EcoScore ID. These fields include:
+            <ul>
+                <li>Description</li>
+                <li>Reuse</li>
+                <li>Reduce</li>
+                <li>Recycle</li>
+                <li>Photo</li>
+                <li>EcoScore</li>
+            </ul>
+        </blockquote>
 
-<div class="text-left">
-    <blockquote>
-        This is a table that was created to have the functionality of being a child to the User Controller. The idea is to be able to currently fill the table
-        with the fields that are filled in with the Object Name, eventually the EcoScore ID. These fields include:
-        <ul>
-            <li>Description</li>
-            <li>Reuse</li>
-            <li>Reduce</li>
-            <li>Recycle</li>
-            <li>Photo</li>
-            <li>EcoScore</li>
-        </ul>
-    </blockquote>
-
-</div>
+    </div>
 
 }
 
@@ -67,12 +92,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
+
             <th>
                 EcoScore
             </th>
-            <th>
-                Action List
-            </th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th>
+                    Action List
+                </th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -100,11 +129,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Ecoscore1)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.EcoscoreId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.EcoscoreId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.EcoscoreId">Delete</a>
-                </td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EcoscoreId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.EcoscoreId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.EcoscoreId">Delete</a>
+                    </td>
+                }
             </tr>
         }
     </tbody>

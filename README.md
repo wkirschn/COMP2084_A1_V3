@@ -84,6 +84,26 @@ The main objective is to give the user a 'snapshot' of the item's lifecycle. If 
 
 </blockquote>
 
+<h2> Version 2.0 </h2>
+
+<blockquote>
+
+This newer version of RePsychle has been fleshed out to allow individuals to sign up and start adding to the database when authorized. Certain sections of the website have been limited, and will display various messages. This will all depend if the user is:
+
+<ol>
+
+<li>Anonymous (Read but no Write)</li>
+
+<li>User / Contributor (Read and Write to the EcoScore Table)</li>
+
+<li>Administrator (Read and Write to the EcoScore Table and User Selection)</li>
+
+</ol>
+
+There will need to be more features added and more tweaks to the functionality!
+
+</blockquote>
+
 </div>
 
 <div class="text-center">
